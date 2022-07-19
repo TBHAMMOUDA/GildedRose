@@ -7,46 +7,24 @@ namespace GildedRoseKata
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("OMGHAI!");
+            Console.WriteLine("Hello ##########################################################################");
+            Console.WriteLine("AUTHOR NAME: TAHA BENHAMMOUDA ##################################################");
+            Console.WriteLine("Implemented design patterns: Singleton , Factory ###############################");
+            Console.WriteLine("Only c# features");
 
-            IList<Item> Items = new List<Item>{
-                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
-                new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
-                new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
-                new Item
-                {
-                    Name = "Backstage passes to a TAFKAL80ETC concert",
-                    SellIn = 15,
-                    Quality = 20
-                },
-                new Item
-                {
-                    Name = "Backstage passes to a TAFKAL80ETC concert",
-                    SellIn = 10,
-                    Quality = 49
-                },
-                new Item
-                {
-                    Name = "Backstage passes to a TAFKAL80ETC concert",
-                    SellIn = 5,
-                    Quality = 49
-                },
-				// this conjured item does not work properly yet
-				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
-            };
-
-            var app = new GildedRose(Items);
-
+            //Init data
+            var database = new Db();
+            var app = new GildedRose(database.productSet);
 
             for (var i = 0; i < 31; i++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
-                Console.WriteLine("name, sellIn, quality");
-                for (var j = 0; j < Items.Count; j++)
+                Console.WriteLine("----------------------------------- Day N:" + (i) + " ---------------------------------");
+                foreach (var product in app.Items)
                 {
-                    System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                    Console.WriteLine("   _____________________________________________________");
+                    System.Console.WriteLine("  | name:      " + product.Name);
+                    System.Console.WriteLine("  | SellIn:    " + product.SellIn);
+                    System.Console.WriteLine("  | Quality:   " + product.Quality);
                 }
                 Console.WriteLine("");
                 app.UpdateQuality();
