@@ -7,6 +7,10 @@ namespace GildedRoseKata
         public List<Item> productSet { get; set; }
 
         private static Db instance = null;
+
+        /// <summary>
+        ///  Db Instance as database
+        /// </summary>
         public static Db Instance
         {
             get
@@ -18,7 +22,12 @@ namespace GildedRoseKata
                 return instance;
             }
         }
-        public Db()
+
+        /// <summary>
+        ///  Db constractor that init data
+        /// </summary>
+        /// <returns>ProductCategoriyEnum</returns>
+        protected Db()
         {
             productSet = new List<Item>{
                 new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},

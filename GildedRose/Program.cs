@@ -13,9 +13,11 @@ namespace GildedRoseKata
             Console.WriteLine("Only c# features");
 
             //Init data
-            var database = new Db();
+            var database = Db.Instance;
+            //Iject data in GildedRose
             var app = new GildedRose(database.productSet);
 
+            //simulate a scheduled job, for 30 days
             for (var i = 0; i < 31; i++)
             {
                 Console.WriteLine("----------------------------------- Day N:" + (i) + " ---------------------------------");
