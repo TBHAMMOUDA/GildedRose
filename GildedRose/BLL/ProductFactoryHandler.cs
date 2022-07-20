@@ -5,14 +5,31 @@ namespace GildedRoseKata.BLL
 {
     public class ProductFactoryHandler
     {
+        /// <summary>
+        ///  this method is for overriding in any class tha inherit form ProductFactoryHandler
+        ///  implement the update inventory logic with one day passing of each ProductCategoriy
+        /// </summary>
+        /// <param name="item"></param>
         public virtual void DayPass(Item item)
         {
             throw new Exception($"Unknown Item Type {item.Name}");
         }
+
+        /// <summary>
+        ///  Used to check all the rules applied on an item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Check</returns>
         public Check ApplyCheks(Item item)
         {
             return new Check(item);
         }
+
+        /// <summary>
+        ///  Used to get object of ProductCategoriyEnum based on ProductCategoriyEnum the item.Name
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>ProductCategoriyEnum</returns>
         public static ProductCategoriyEnum GetCategory(Item item)
         {
             if (item.Name.Equals("Aged Brie"))
@@ -27,7 +44,12 @@ namespace GildedRoseKata.BLL
                 return ProductCategoriyEnum.NormalItem;
         }
 
-        //use GetPorductInstanceHandler method to get object of product handler
+
+        /// <summary>
+        ///  Used to get object of ProductFactoryHandler that handel prodect instentiation based on ProductCategoriyEnum
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>ProductFactoryHandler</returns>
         public static ProductFactoryHandler GetPorductInstanceHandler(Item item)
         {
             if (GetCategory(item) == ProductCategoriyEnum.AgedBrie)
